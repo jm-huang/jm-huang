@@ -1,0 +1,26 @@
+\documentclass[a4paper, 11pt]{article}
+\author{Jiaming Huang}
+\title{Why PageRank Converges~?}
+\usepackage{amsmath}
+\begin{document}
+	\maketitle
+	The PageRank equation is: 
+	\begin{equation}\label{PageRank}
+	\vec{P}^{t+1}=\lambda \vec{A}\vec{P}^t+\mu \vec{Q}
+	\end{equation}
+	
+	where $0\leq \lambda, \mu \leq 1, \vec{A} $ is a transition matrix with each column summing to 1 and $\vec{Q}$ can be any vector with the same dimension of $\vec{P}$. 
+	
+	Why PageRank (\ref{PageRank}) converges? 
+	
+	Prove(\cite{PageRank Prove}):
+	
+	Suppose $\vec{P}^0=\pi$, we have $\vec{P}^n=(\lambda \vec{A})^n\pi + \sum_{k=0}^{n-1}(\lambda \vec{A})^k \mu \vec{Q} $. Since $ 0 \leq \lambda, \mu \leq 1 $ and the eigenvalues of the transition matrix $\vec{A}$ are in $[-1, 1]$, we have $\lim\limits_{n\to \infty }(\lambda \vec{A})^n=\vec{0}$ and $\lim\limits_{n\to \infty}\sum_{k=0}^{n-1}(\lambda \vec{A})^k =(\vec{I}-\lambda \vec{A})^{-1}$. So $\vec{P}^n$ finally converges to $\vec{P}^*=(\vec{I}-\lambda \vec{A})^{-1}\mu \vec{Q}$. So the value of $\vec{P}^*$ is only relavant to $\vec{A}$, $\vec{Q}$, $\lambda$ and $\mu$ and the convergence is irrelevant to $\vec{Q} ~\bullet$
+	
+	\medskip
+	\begin{thebibliography}{9}
+	\bibitem{PageRank Prove}
+	Wei Feng, Jianyong Wang.
+	\textit{Incorporating Heterogeneous Information for Personalized Tag Recommendation in Social Tagging Systems.} KDD, 2012
+	\end{thebibliography}
+\end{document}
