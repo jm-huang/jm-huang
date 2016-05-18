@@ -1,0 +1,25 @@
+body{
+        background-color: #f5f5d5;
+        font-family: Georgia, serif;
+        margin: 0 auto;
+        width: 90%;
+        min-width:140px;
+        max-width:1000px;
+    }
+    .author{
+        font-style: italic;
+        margin-top: 0px;
+    }
+    .paper_title{
+        margin-top: 50px;
+        margin-bottom: 0px;
+        color: #059A64;
+    }
+    #page_title{
+        text-align: center;
+        border-radius: 1em;
+        color: blue;
+        background-color: rgba(101, 206, 172, 0.68);
+        padding: 15px;
+    }
+}

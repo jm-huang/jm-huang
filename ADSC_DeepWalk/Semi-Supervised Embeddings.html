@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Semi-Supervised Embeddings</title>
+    <link rel="stylesheet" type="text/css" href="/style%20sheet/basic%20style.css">
+    <script type="text/javascript" async
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+</head>
+<body>
+<div id="containter">
+<h3><a href="/index.html">Jimmy's Home Page</a> \( \succ \) Semi-Supervised Embeddings</h3>
+    <hr>
+    <div id="page_title">
+    <h1>Semi-Supervised Embeddings</h1>
+    <p>Edit: 05/18/2016</p>
+    </div>
+    <hr>
+
+    <section class="paper">
+    <h3 class="paper_title">[2003][ICML]: Semi-Supervised Learning Using Gaussian Fields and Harmonic Functions</h3>
+    <p class="author">Xiaojin Zhu, Zoubin Ghahramani, John Lafferty</p>
+    <div class="abstract">
+    <p> Target function:
+    $$ E(f) = \frac{1}{2}\sum_{i,j}w_{ij}(f(i)-f(j))^2 ,$$
+    where \( f \) is real-valued function: \( V\to R \) on \( G \) and then assign labels based on \( f \). Constrain \( f \) to take values \( f(i)=f_l(i)\equiv y_i \), \( w_{ij} \) is the weight matrix on the edges of the graph is given. The author form a Gaussian field <span style="color:red">\( p_\beta(f) = \frac{e^{-\beta E(f)}}{Z_\beta} \)</span> and finally give the solution for \( f_u \) :
+    $$ f_u=(D_{uu}-W_{uu}^{-1})W_{ul}f_l=(I-P_{uu})^{-1}P_{ul}f_l $$
+
+    </p>
+    </div>
+    </section>
+
+    <section class="paper">
+    <h3 class="paper_title">[2010][WSDM]: Supervised random walks: predicting and recommending links in social networks</h3>
+    <p class="author">Lars Backstrom, Jure Leskovec</p>
+    <div class="abstract">
+    <p>Using PageRank algorithm to score the candidate edges from \( s \)  to others and predict the edge with highest score will be link with \( s \)  in the future. More presicely, given a edge weight function \( f_w(\phi_{uv}) \) with parameter \( w \) and a set \( C = D \cap L \) where \( D \) is contain the noides that connected directly with \( s \)and \( L \) contain the linkes not connected directly with \( s \) then optimized the target function:
+    $$ min_wF(w)=\|w\|^2 \\ \text{such that:} \\
+    \forall d \in D, ~l \in L: p_l < p_d $$
+    where \( p \) is the vector of PageRank scores. The "soft" of the target function becomes:
+    $$ min_wF(w)=\|w\|^2 + \lambda \sum_{d \in D, l \in L}h(p_l - p_d)~, $$
+    Then solving the optimization problem.
+    </p>
+    </div>
+    </section>
+
+    <section class="paper">
+    <h3 class="paper_title">[2012][KDD]: Incorporating Heterogeneous Information for Personalized Tag Recommendation in Social Tagging Systems</h3>
+    <p class="author">Wei Feng, Jianyong Wang</p>
+    <div class="abstract">
+    <p style="color:red">wait a minute...</p>
+    </div>
+    </section>
+
+    <section class="paper">
+    <h3 class="paper_title">[2016][IJCAI]: Max-Margin DeepWalk: Discriminative Learning of Network Representation</h3>
+    <p class="author">Cunchao Tu, Weicheng Zhang, Zhiyuan Liu, Maosong Sun</p>
+    <div class="abstract">
+    <p>Min DeepWalk with SVM(max-margin).</p>
+    <p>From [Yang et al., 2015] , we know that DeepWalk actually factorizes a matrix \( M \). This paper using the learnt representations \( X \) as features and train an SVM for vertex classification.<br> <span style="color:red">Not understanding very well...</span></p>
+    </div>
+    </section>
+</div>
+</body>
+</html>

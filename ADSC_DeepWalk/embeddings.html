@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Mathjax: LaTex to MathMl-->
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <link rel="stylesheet" type="text/css" href="/style%20sheet/basic%20style.css">
+    <title>Word or Verties Embeddings</title>
+    <style type="text/css">
+/*
+body{
+    border-radius: 1em;
+    background-color: #f5f5d5;
+    font-family: Georgia, serif;
+}
+.author{
+    font-style: italic;
+    margin-top: 0px;
+}
+.paper_title{
+    margin-top: 50px;
+    margin-bottom:0px;
+    color: #059A64;
+}
+#page_title{
+    text-align: center;
+    border-radius: 1em;
+    color: blue;
+    background-color: rgba(101, 206, 172, 0.68);
+    padding: 15px;
+}
+#container{
+    margin: 0 auto;
+    width: 90%;
+    min-width:140px;
+    max-width:900px;
+}*/
+</style>
+</head>
+
+<body>
+<div id="container">
+    <h3><a href="/index.html">Jimmy's Home Page</a> \( \succ \) Embeddings</h3>
+
+    <hr>
+    <div id="page_title">
+    <h1>Words or Verties Embeddings</h1>
+    <p>Edit: 05/18/2016</p>
+    </div>
+    <hr>
+
+    <section class="paper">
+    <h3 class="paper_title">[2003][JMLR]: A Neural Probabilistic Language Model</h3>
+    <p class="author">Yoshua Bengio, Rejean Ducharme, Pascal Vincent, Christian Jauvin</p>
+    <div class="abstract">
+    <p>A goal of statistical language modeling is to learn the joint probability function of sequences of words in a language: \(P(w_1^T)=\prod_{t=1}^{T}P(w_t|w_1^{t-1})\). But this is intrinsically difficult because of the curse of dimensionality. So this paper learnt <b>a distributed representation for words</b> to address the curse of dimensionality. More precisely, this paper makes this assumption: $$P(w_t|w_1^{t-1})\approx P(w_t|w_{t-n+1}^{t-1}).$$ and maximizes the log-likehood:$$L=\frac{1}{T}\sum_{t}\log f(w_t, w_{t-1}, \ldots, w_{t-n+1};\theta) + R(\theta), $$ where \(f(w_t, w_{t-1}, \ldots, w_{t-n+1};\theta)=g(w_t, C(w_{t-1}), \ldots, C(w_{t-n+1}))\) and \(R(\theta)\) is a weight decay penalty. \(g(w_t, C(w_{t-1}), \ldots, C(w_{t-n+1}))\) is the neural network and \(C(i)\) is the i-th word feature vector(embedding).
+    <br />
+    Note: \(f(w_t, w_{t-1}, \ldots, w_{t-n+1};\theta)=P(w_t|w_1^{t-1})\) too.</p></div>
+    </section>
+
+
+    <section class="paper">
+    <h3 class="paper_title">[2013][ICLR]: Efficient Estimation of Word Representations in Vector Space</h3>
+    <p class="author">Tomas Mikolov, Kai Chen, Greg Corrado, Jaffrey Dean</p>
+    <h3 class="paper_title">[2013][NIPS]: Distributed Representations of Words and Phrases and their Compositionality</h3>
+    <p class="author">Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg Corrado, Jaffrey Dean</p>
+    <div class="abstract">
+    <p>The two papers proposed the <b>skip-gram</b> model which instead of learning \(P(w|context)\)[Bengio et al., 2003] but learning \(P(context|w)\). For improving the training efficiency, it proposed a mathod called: <b>Negative Sampling</b>.</p>
+    </div>
+    </section>
+
+
+    <section class="paper">
+    <h3 class="paper_title">[2014][EMNLP]: Lexicon Infused Phrase Embeddings for Named Entity Resolution</h3>
+    <p class="author">Alexandre Passos, Vineet Kumar, Andrew McCallum</p>
+    <div class="abstract">
+    <p>This paper extend the skip-gram model[Mikolov et al., 2003] by adding the lexicon as the contexts of word. So, it calculate: \(P(w|context,lexicon)\)</p>
+    </div>
+    </section>
+
+
+    <section class="paper">
+    <h3 class="paper_title">[2014][EMNLP]: Knowledge Graph and Text Jointly Embedding</h3>
+    <p class="author">Zhen Wang, Jianwen Zhang, Jianlin Feng, Zheng Chen</p>
+    <div class="abstract" style="color:red">
+    <p>Not yet finished reading...</p>
+    </div>
+    </section>
+
+
+    <section class="paper">
+    <h3 class="paper_title">[2014][KDD]: DeepWalk: Online Learning of Social Representations</h3>
+    <p class="author">Bryan Perozzi, Rami AI-Rfou, Steven Skiena</p>
+    <div class="abstract">
+    <ol>
+        <li>Using Random Walk to generate pass(sentence).</li>
+        <li>Using skip-gram[Mikolov et al., 2013] to train the sentence.</li>
+        <li>Data mining on the learned node embeddings</li>
+    </ol>
+    </div>
+    </section>
+
+    <section class="paper">
+    <h3 class="paper_title">[2015][IJCAI]: Network Representation Learning with Rich Text Information</h3>
+    <p class="author">Cheng Yang, Zhiyuan Liu, Deli Zhao, Maoshong Sun, Edward Y. Chang</p>
+    <div class="abstract">
+    <p>This paper have proved that the DeepWalk[Perozzi et al., 2014] is actually equivalent to matrix factorization(MF), and proposed text-associated DeepWalk(TADW).</p>
+    <p>More precisely, skip-gram with softmax if factorizing a matrix M where $$ M_{ij} = \log{\frac{N(v_i,c_j)}{N(v_i)}}. $$</p>
+    <p>But, what \(M_{ij}\) represents in DeepWalk?</p>
+    <p>From the discussion, we can see that \( M_{ij} = \log{N(v_i,c_j)/N(v_i)} \) is logarithm of the average probability that vertex \(i\) randomly walks to vertex \(j\) in \(t\) steps. In fact, DeepWalk factorizing \(M\) as \(W^TH\) where \( W \in R^{k \times |V|} \text{ and } H \in R^{k \times |V|}\)</p>
+    <p>Intuitive by that, this paper proposed a method learning from both network and text information. In detail, given \(M \in R^{b \times d}\) and the observation set of matrix \( M \) be \(\Omega \). We want to find matrices \(W \in R^{k\times b} \text{ and } H \in R^{k\times d}\) where \(k \ll {b,d}\), to minimize $$ \min_{W,H}{\sum_{(i,j \in \Omega)}(M_{ij}-(W^TH)_{ij})^2+\frac{\lambda}{2}(\|W\|^2_F + \|H\|^2_F)}, $$ If items in matrix \( M \) have additional features, we can apply inductive matrix completion [Natarajan and Dhillon, 2014] to take advantage of them. Thus, we have:
+    $$ \min_{W,H}{\sum_{(i,j \in \Omega)}(M_{ij}-( X^T W^T H Y)_{ij})^2+\frac{\lambda}{2}(\|W\|^2_F + \|H\|^2_F)},  $$
+    where \( W \in R^{k \times f_x}, ~ H \in R^{k \times f_y}, ~ X \in R^{f_x \times b} ,~ Y \in R^{f_y \times d}\).
+    </p>
+    <p>In DeepWalk with text information we have object function:
+    $$\min_{W,H}{\sum_{i,j}(M_{ij}-( W^T H T)_{ij})^2+\frac{\lambda}{2}(\|W\|^2_F + \|H\|^2_F)},  $$
+    where \( W \in R^{k\times |V|}, H \in R^{k\times f_t} \text{ and } T \in R^{k\times |V|} \) is the feature matrix.
+    </p>
+
+
+
+
+    </div>
+    </section>
+
+</div>
+<p id="bottom"></p>
+</body>
+</html>
