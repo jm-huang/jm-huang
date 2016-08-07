@@ -96,7 +96,7 @@ body{
     <ol>
         <li>Using Random Walk to generate pass(sentence).</li>
         <li>Using skip-gram[Mikolov et al., 2013] to train the sentence.</li>
-        <li>Data mining on the learned node embeddings</li>
+        <li>Data mining on the learned node embeddings.</li>
     </ol>
     </div>
     </section>
@@ -106,16 +106,16 @@ body{
     <p class="author">Cheng Yang, Zhiyuan Liu, Deli Zhao, Maoshong Sun, Edward Y. Chang</p>
     <div class="abstract">
     <p>This paper have proved that the DeepWalk[Perozzi et al., 2014] is actually equivalent to matrix factorization(MF), and proposed text-associated DeepWalk(TADW).</p>
-    <p>More precisely, skip-gram with softmax if factorizing a matrix M where $$ M_{ij} = \log{\frac{N(v_i,c_j)}{N(v_i)}}. $$</p>
+    <p>More precisely, skip-gram with softmax is factorizing a matrix M where $$ M_{ij} = \log{\frac{N(v_i,c_j)}{N(v_i)}}. $$</p>
     <p>But, what \(M_{ij}\) represents in DeepWalk?</p>
-    <p>From the discussion, we can see that \( M_{ij} = \log{N(v_i,c_j)/N(v_i)} \) is logarithm of the average probability that vertex \(i\) randomly walks to vertex \(j\) in \(t\) steps. In fact, DeepWalk factorizing \(M\) as \(W^TH\) where \( W \in R^{k \times |V|} \text{ and } H \in R^{k \times |V|}\)</p>
+    <p>From the discussion, we can see that \( M_{ij} = \log{N(v_i,c_j)/N(v_i)} \) is logarithm of the average probability that vertex \(i\) randomly walks to vertex \(j\) in \(t\) (2t is the window size) steps. In fact, DeepWalk factorizing \(M\) as \(W^TH\) where \( W \in R^{k \times |V|} \text{ and } H \in R^{k \times |V|}\)</p>
     <p>Intuitive by that, this paper proposed a method learning from both network and text information. In detail, given \(M \in R^{b \times d}\) and the observation set of matrix \( M \) be \(\Omega \). We want to find matrices \(W \in R^{k\times b} \text{ and } H \in R^{k\times d}\) where \(k \ll {b,d}\), to minimize $$ \min_{W,H}{\sum_{(i,j \in \Omega)}(M_{ij}-(W^TH)_{ij})^2+\frac{\lambda}{2}(\|W\|^2_F + \|H\|^2_F)}, $$ If items in matrix \( M \) have additional features, we can apply inductive matrix completion [Natarajan and Dhillon, 2014] to take advantage of them. Thus, we have:
     $$ \min_{W,H}{\sum_{(i,j \in \Omega)}(M_{ij}-( X^T W^T H Y)_{ij})^2+\frac{\lambda}{2}(\|W\|^2_F + \|H\|^2_F)},  $$
     where \( W \in R^{k \times f_x}, ~ H \in R^{k \times f_y}, ~ X \in R^{f_x \times b} ,~ Y \in R^{f_y \times d}\).
     </p>
     <p>In DeepWalk with text information we have object function:
     $$\min_{W,H}{\sum_{i,j}(M_{ij}-( W^T H T)_{ij})^2+\frac{\lambda}{2}(\|W\|^2_F + \|H\|^2_F)},  $$
-    where \( W \in R^{k\times |V|}, H \in R^{k\times f_t} \text{ and } T \in R^{k\times |V|} \) is the feature matrix.
+    where \( W \in R^{k\times |V|}, H \in R^{k\times f_t} \text{ and the feature matrix } T \in R^{k\times |V|} \).
     </p>
 
 
