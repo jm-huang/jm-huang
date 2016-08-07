@@ -33,11 +33,10 @@ then:
 
 #Step 4: Debug
 1. Commund not found
-   add the directory of sslocal in to sudo path.
+    add the directory of sslocal in to sudo path.
     ```
     > sudo visudo
     ```
-
     then add your sslocal directory in the end of "secure_path" line.
 2. Can't connect to internet using firefox.
     ok, just using chrome instead.
